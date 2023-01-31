@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * lesson3
  */
-public class lesson3 {
+public class lesson3advanced {
 
     private static Scanner input = new Scanner(System.in);
 
@@ -12,14 +12,19 @@ public class lesson3 {
         int n = 9;
         int m = 9;
         int[][] arr = new int[n][m];
-        int [] blocks = new int [] {19, 27};        // Указать тут номера ячеек где поставим блоки
+
+        // int[][] preparr = arrpreparation(arr,n,m);
+        // print(preparr, n, m);
+        print(arr, n, m);
         System.out.println();
-        System.out.println("Номера ячеек");
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Выберите значения, где бы вы хотели поставить блок: ");
         arrOneByOneFilling(arr, n, m);
         print(arr, n, m);
         System.out.println();
-        blocksprep(arr, n, m, blocks);
+        arrpreparation(arr,n,m);
         print(arr, n, m);
+        System.out.println();
         int[][] array = calc(arr, n, m);
         System.out.println("------------------------------------------------------------");
         System.out.println("Заполненный двумерный массив выглядет вот так");
@@ -29,22 +34,29 @@ public class lesson3 {
         System.out.println("Максимальное количество ходов равно = " + array[n - 1][m - 1]);
     }
 
-    public static int [][] blocksprep (int arr[][], int n, int m, int arr2 [])
+    public static int [][] arrpreparation (int arr[][], int n, int m)
         {
-        int count = 0;
-        while (count < arr2.length) {
+        System.out.println("Хотите ли вы поставит блок");
+        String reply = input.nextLine();
+        while (reply == "y"){
+            System.out.println("Введите № ячейки: ");
+            int block = input.nextInt();
             for (int i = 1; i < n; i++) {
                 for (int j = 1; j < m; j++) {
-                    if (arr[i][j] == arr2[count]){
+                    if (block == arr[i][j]){
                         arr[i][j] = 0;
                     } 
                 }
             }
-        count +=1;
+        
         }
         return arr;
     }
-
+    // // System.out.println("Введите координаты где бы вы хотели поставить блок");
+    // // int block = input.nextInt();
+    // // arr [i][j] = block;
+    // return arr;
+    // }
 
     public static void print(int arr[][], int n, int m) {
         for (int i = 1; i < n; i++) {
