@@ -22,12 +22,12 @@ public class test {
         m = m + 1; // Это тоже "костыль"
 
         int[][] arr = new int[n][m];
-        int[] blocks = new int[] {19, 35, 28, 30}; // 19, 35, 28, 30 // Указать тут номера ячеек где поставим блоки
-        int startingpoint = 5; // определяем стартовую точку откуда начнется расчет
+        int[] blocks = new int[] {}; // 19, 35, 28, 30 // Указать тут номера ячеек где поставим блоки
+        int startingpoint = 0; // определяем стартовую точку откуда начнется расчет
 
         System.out.println("Так выглядит заполненный массив цифрами по порядку");
         int[][] newarea = arrOneByOneFilling(arr, n, m);
-        print(arr, n, m); // печать исходного поля запорлненного цифрами по порядку
+        print(arr, n, m); // печать исходного поля заполненного цифрами по порядку
         System.out.println();
 
         System.out.println("------------------------------------------------------------");
@@ -35,18 +35,18 @@ public class test {
         int[] arrayshortpositions = areadefinition(newarea, n, m, startingpoint); // если стартовая точке не равна нулю,
                                                                                   // массива будет
         // уменьшен
-        // System.out.println(Arrays.toString(arrayshortpositions));            // печать массива, чтобы понять правильно ли определяются новые размеры поля
+        // System.out.println(Arrays.toString(arrayshortpositions)); // печать массива,
+        // чтобы понять правильно ли определяются новые размеры поля
 
-        if (startingpoint == 0){                    // Еще один костыль
-            n = arrayshortpositions[0] ;
-            m = arrayshortpositions[1] ;
-        }else{
-            n = arrayshortpositions[0]+1;
-            m = arrayshortpositions[1]+1 ;
+        if (startingpoint == 0) { // Еще один костыль
+            n = arrayshortpositions[0];
+            m = arrayshortpositions[1];
+        } else {
+            n = arrayshortpositions[0] + 1;
+            m = arrayshortpositions[1] + 1;
         }
 
-
-        print(arr, n, m); // печать скорректированного поля запорлненного цифрами по порядку
+        print(arr, n, m); // печать скорректированного поля заполненного цифрами по порядку
         System.out.println();
         System.out.println("------------------------------------------------------------");
         System.out.println("Так выглядит массив после установки блоков");
@@ -55,16 +55,14 @@ public class test {
         print(array, n, m); // печать поля с установленными блоками
         System.out.println();
         System.out.println("------------------------------------------------------------");
-        System.out.println("Так выглядит итоговый массив заполненный значениями с количеством ходов");
-
+        System.out.println("Так выглядит итоговый массив, заполненный значениями с количеством ходов");
 
         calc(array, n, m);
-        print(array, n, m); // печать поля с отоброжением количества ходов в каждой ячейке
+        print(array, n, m); // печать поля с отображением количества ходов в каждой ячейке
         System.out.println();
         System.out.println();
         System.out.println("Максимальное количество ходов равно = " + array[n - 1][m - 1]);
         System.out.println();
-
     }
 
     public static int[][] arrOneByOneFilling(int arr[][], int n, int m) {
